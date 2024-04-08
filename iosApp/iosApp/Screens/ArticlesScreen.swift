@@ -6,18 +6,18 @@
 //  Copyright © 2024 orgName. All rights reserved.
 //
 
-import shared
 import SwiftUI
+import shared
 
 extension ArticlesScreen {
     
     @MainActor
     class ArticlesViewModelWrapper: ObservableObject {
+        
         let articlesViewModel: ArticlesViewModel
         
-        
         init() {
-            articlesViewModel = ArticlesViewModel()
+            articlesViewModel = ArticlesInjector().articlesViewModel
             articlesState = articlesViewModel.articlesState.value
         }
         
