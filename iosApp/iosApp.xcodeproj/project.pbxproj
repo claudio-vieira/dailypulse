@@ -12,6 +12,7 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		429187272BA4A485001CDEAA /* ArticlesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429187262BA4A485001CDEAA /* ArticlesScreen.swift */; };
 		4295FC7C2BC8A2B20009BB0D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4295FC7A2BC89D920009BB0D /* libsqlite3.tbd */; };
+		4298B7BD2BCDC0420091613D /* SourcesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4298B7BC2BCDC0420091613D /* SourcesScreen.swift */; };
 		42D8A9E62B9BC49F00B564CF /* AboutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8A9E52B9BC49F00B564CF /* AboutListView.swift */; };
 		42D8A9E82B9BCF5D00B564CF /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8A9E72B9BCF5D00B564CF /* AboutScreen.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
@@ -36,6 +37,7 @@
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		429187262BA4A485001CDEAA /* ArticlesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesScreen.swift; sourceTree = "<group>"; };
 		4295FC7A2BC89D920009BB0D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4298B7BC2BCDC0420091613D /* SourcesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesScreen.swift; sourceTree = "<group>"; };
 		42D8A9E52B9BC49F00B564CF /* AboutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutListView.swift; sourceTree = "<group>"; };
 		42D8A9E72B9BCF5D00B564CF /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 				42D8A9E52B9BC49F00B564CF /* AboutListView.swift */,
 				42D8A9E72B9BCF5D00B564CF /* AboutScreen.swift */,
 				429187262BA4A485001CDEAA /* ArticlesScreen.swift */,
+				4298B7BC2BCDC0420091613D /* SourcesScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4298B7BD2BCDC0420091613D /* SourcesScreen.swift in Sources */,
 				429187272BA4A485001CDEAA /* ArticlesScreen.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				42D8A9E62B9BC49F00B564CF /* AboutListView.swift in Sources */,

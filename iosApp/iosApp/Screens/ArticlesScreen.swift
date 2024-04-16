@@ -65,7 +65,7 @@ struct ArticlesScreen: View {
     }
 }
 
-struct AppBar: View {
+private struct AppBar: View {
     var body: some View {
         Text("Articles")
             .font(.largeTitle)

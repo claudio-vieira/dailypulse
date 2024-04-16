@@ -10,8 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.List
-import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,49 +31,40 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import coil.compose.AsyncImage
-import com.example.dailypulse.articles.application.Article
-import com.example.dailypulse.articles.presentation.ArticlesViewModel
+import com.example.dailypulse.source.application.Source
+import com.example.dailypulse.source.presentation.SourcesViewModel
 import kotlinx.coroutines.coroutineScope
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ArticlesScreen(
-    onAboutButtonClick: () -> Unit,
-    sourcesButtonClick: () -> Unit,
-    articlesViewModel: ArticlesViewModel = koinViewModel(),
+fun SourcesScreen(
+    onUpButtonClick: () -> Unit,
+    sourcesViewModel: SourcesViewModel = koinViewModel(),
 ) {
-    val articlesState = articlesViewModel.articlesState.collectAsState()
+    val sourcesState = sourcesViewModel.sourcesState.collectAsState()
 
     Column {
-        AppBar(onAboutButtonClick, sourcesButtonClick)
+        AppBar(onUpButtonClick)
 
-        if (articlesState.value.error != null)
-            ErrorMessage(articlesState.value.error!!)
-        if (articlesState.value.articles.isNotEmpty())
-            ArticlesListView(articlesViewModel)
+        if (sourcesState.value.error != null)
+            ErrorMessage(sourcesState.value.error!!)
+        if (sourcesState.value.sources.isNotEmpty())
+            SourcesListView(sourcesViewModel)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AppBar(
-    onAboutButtonClick: () -> Unit,
-    sourcesButtonClick: () -> Unit
+    onUpButtonClick: () -> Unit,
 ) {
     TopAppBar(
-        title = { Text(text = "Articles") },
-        actions = {
-            IconButton(onClick = sourcesButtonClick) {
+        title = { Text(text = "Sources") },
+        navigationIcon = {
+            IconButton(onClick = onUpButtonClick) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Outlined.List,
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Sources Button",
-                )
-            }
-            IconButton(onClick = onAboutButtonClick) {
-                Icon(
-                    imageVector = Icons.Outlined.Info,
-                    contentDescription = "About Device Button",
                 )
             }
         }
@@ -83,14 +73,14 @@ private fun AppBar(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ArticlesListView(viewModel: ArticlesViewModel) {
+private fun SourcesListView(viewModel: SourcesViewModel) {
 
     val pullRefreshState = rememberPullToRefreshState { true }
 
     if (pullRefreshState.isRefreshing) {
         LaunchedEffect(true) {
             coroutineScope {
-                viewModel.getArticles(true) {
+                viewModel.getSources(true) {
                     pullRefreshState.endRefresh()
                 }
             }
@@ -98,8 +88,8 @@ private fun ArticlesListView(viewModel: ArticlesViewModel) {
     }
     Box(Modifier.nestedScroll(pullRefreshState.nestedScrollConnection).zIndex(-1f)) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(viewModel.articlesState.value.articles) { article ->
-                ArticleItemView(article = article)
+            items(viewModel.sourcesState.value.sources) { source ->
+                SourceItemView(source = source)
             }
         }
         PullToRefreshContainer(
@@ -110,27 +100,22 @@ private fun ArticlesListView(viewModel: ArticlesViewModel) {
 }
 
 @Composable
-private fun ArticleItemView(article: Article) {
+private fun SourceItemView(source: Source) {
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        AsyncImage(
-            model = article.imageUrl,
-            contentDescription = null
-        )
-        Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = article.title,
+            text = source.name,
             style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = article.desc)
+        Text(text = source.description)
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = article.date,
+            text = "${source.language} - ${source.country}",
             style = TextStyle(color = Color.Gray),
             modifier = Modifier.align(Alignment.End)
         )

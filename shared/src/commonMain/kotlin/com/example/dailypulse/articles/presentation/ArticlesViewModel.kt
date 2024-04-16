@@ -1,7 +1,8 @@
-package com.example.dailypulse.articles
+package com.example.dailypulse.articles.presentation
 
 import com.example.dailypulse.BaseViewModel
 import com.example.dailypulse.ResponseState
+import com.example.dailypulse.articles.application.ArticlesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
